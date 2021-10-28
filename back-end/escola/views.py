@@ -1,3 +1,4 @@
+from django import http
 from django.utils import decorators
 from rest_framework import serializers, status, viewsets, generics
 from rest_framework import response
@@ -20,6 +21,7 @@ class CursosViewSet(viewsets.ModelViewSet):
     """Exibindo todos os cursos"""
     queryset = Curso.objects.all()
     serializer_class = CursoSerializer
+    http_method_names = ['get', 'post', 'put', 'path']
     
     def create(self, request):
         serializer = self.serializer_class(data=request.data)
